@@ -1,6 +1,6 @@
-import styles from './Vaga.module.css'
+import React from 'react'
 
-type Props = {
+interface VagaProps {
   titulo: string
   localizacao: string
   nivel: string
@@ -10,22 +10,31 @@ type Props = {
   requisitos: string[]
 }
 
-const Vaga = (props: Props) => (
-  <li className={styles.vaga}>
-    <h3 className={styles.vagaTitulo}>{props.titulo}</h3>
-    <ul>
-      <li>Localizacao: {props.localizacao}</li>
-      <li>Senioridade: {props.nivel}</li>
-      <li>Tipo de contratacao: {props.modalidade}</li>
-      <li>
-        Salário: {props.salarioMin} - {props.salarioMax}
-      </li>
-      <li>Requisitos: {props.requisitos.join(', ')}</li>
-    </ul>
-    <a className={styles.vagaLink} href="#">
-      Ver detalhes e candidatar-se
-    </a>
-  </li>
-)
+const Vaga: React.FC<VagaProps> = ({
+  titulo,
+  localizacao,
+  nivel,
+  modalidade,
+  salarioMin,
+  salarioMax,
+  requisitos
+}) => {
+  return (
+    <div>
+      <h3>{titulo}</h3>
+      <p>{localizacao}</p>
+      <p>{nivel}</p>
+      <p>{modalidade}</p>
+      <p>
+        R${salarioMin} - R${salarioMax}
+      </p>
+      <ul>
+        {requisitos.map((requisito, index) => (
+          <li key={index}>{requisito}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default Vaga

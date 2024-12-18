@@ -2,11 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import App from './App'
+import { GlobalStyle } from './globalStyles' // Importe o GlobalStyle
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
 root.render(
   <React.StrictMode>
+    <GlobalStyle /> {/* Aqui você aplica os estilos globais */}
     <App />
   </React.StrictMode>
 )
